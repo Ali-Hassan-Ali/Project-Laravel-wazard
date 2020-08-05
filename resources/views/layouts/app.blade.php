@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Sing App Dashboard - Courses</title>
+    <title>@yield('title')</title>
     <link href="{{ asset('css/application.min.css')}}" rel="stylesheet">
     <!-- as of IE9 cannot parse css files with more that 4K classes separating in two files -->
     <!--[if IE 9]>
@@ -37,6 +37,7 @@
 
 @yield('content')
 
+@include('layouts.include._footer')
 <!-- common libraries. required for every page-->
 <script src="{{ asset('../node_modules/jquery/dist/jquery.min.js')}}"></script>
 <script src="{{ asset('../node_modules/jquery-pjax/jquery.pjax.js')}}"></script>

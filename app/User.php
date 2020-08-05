@@ -21,7 +21,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'last_name', 'first_name', 'email', 'password', 'organization', 'image'
-        , 'dob', 'cv1', 'cv2', 'cv3', 'cv4', 'country', 'phone1', 'phone2'
+        , 'dob','resume','cv1', 'cv2', 'cv3', 'cv4', 'country', 'phone1', 'phone2',
     ];
 
     protected $appends = ['image_path'];

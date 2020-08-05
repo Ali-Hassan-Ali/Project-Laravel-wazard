@@ -17,7 +17,7 @@
                             13
                         </span>
                 &nbsp;
-                {{ auth()->user()->first_name }} <strong> {{ auth()->user()->last_name }}
+                Mohamed <strong>Eways</strong>
                 <b class="caret"></b>
             </a>
             <!-- #notifications-dropdown-menu goes here when screen collapsed to xs or sm -->
@@ -35,30 +35,47 @@
             </li>
         </ul>
         <!-- every .sidebar-nav may have a title -->
-        <h5 class="sidebar-nav-title">Learning <a class="action-link" href="#"><i
-                    class="glyphicon glyphicon-refresh"></i></a></h5>
+        <h5 class="sidebar-nav-title">Learning <a class="action-link" href="#"><i class="glyphicon glyphicon-refresh"></i></a></h5>
         <ul class="sidebar-nav">
             <li class="">
-                @if (auth()->user()->organization == 'TrainingOrg')
-                    <a href="">
-                        <span class="icon"><i class="fi flaticon-controls"></i></span>Add Training Job
-                    </a>
-                @elseif (auth()->user()->organization == 'WorkOrg')
-                    <a href="">
-                        <span class="icon"><i class="fi flaticon-controls"></i></span>Add Work Job
-                    </a>
-                @elseif (auth()->user()->organization == 'EducationalOrg')
-                    <a href="">
-                        <span class="icon"><i class="fi flaticon-controls"></i></span>Add Work Job
-                    </a>
-                @else
-
-                @endif
+                <!-- an example of nested submenu. basic bootstrap collapse component -->
+                <a href="/courses">
+                            <span class="icon">
+                                <i class="fi flaticon-controls"></i>
+                            </span>
+                    Courses
+                </a>
             </li>
-        </ul>
+            <li class="">
+                <!-- an example of nested submenu. basic bootstrap collapse component -->
+                <a href="/centers">
+                            <span class="icon">
+                                <i class="fi flaticon-equal-1"></i>
+                            </span>
+                    Centers
+                </a>
+            </li>
+            <li class="">
+                <!-- an example of nested submenu. basic bootstrap collapse component -->
+                <a href="/educational_org">
+                            <span class="icon">
+                                <i class="fi flaticon-alarm"></i>
+                            </span>
+                    educational org
+                </a>
+            </li>
 
-        <h5 class="sidebar-nav-title">Careers <a class="action-link" href="#"><i
-                    class="glyphicon glyphicon-plus"></i></a></h5>
+            <li class="">
+                <!-- an example of nested submenu. basic bootstrap collapse component -->
+                <a href="careers">
+                            <span class="icon">
+                                <i class="fi flaticon-alarm"></i>
+                            </span>
+                    Careers
+                </a>
+            </li>
+
+        </ul>
 
         <h5 class="sidebar-nav-title">Chat Room</h5>
         <!-- A place for sidebar notifications & alerts -->

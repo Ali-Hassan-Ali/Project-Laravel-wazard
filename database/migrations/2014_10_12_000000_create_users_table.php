@@ -29,6 +29,7 @@ class CreateUsersTable extends Migration
             $table->string('cv2')->nullable();
             $table->string('cv3')->nullable();
             $table->string('cv4')->nullable();
+            $table->string('resume')->nullable();
 
             $table->string('sex')->nullable();
             $table->integer('total_stars')->nullable();
@@ -36,7 +37,6 @@ class CreateUsersTable extends Migration
             $table->string('city')->nullable();
             $table->string('address_detailed')->nullable();
 
-            $table->string('resume')->nullable();
 
 
             $table->boolean('student')->nullable();

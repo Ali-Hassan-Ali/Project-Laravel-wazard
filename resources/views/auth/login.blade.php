@@ -1,6 +1,6 @@
-@extends('layouts.login')
+@extends('layouts.SignUpAndLogin')
 
-@section('title','Log-in')
+@section('title','Sign-In')
 
 @section('content')
 

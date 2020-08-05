@@ -13,12 +13,13 @@ public function index(){
 
     $courses = course::all();
 
-    return view('courses',compact('courses'));
+    return view('pages.courses',compact('courses'));
 }
     //
     public function create(){
         return view('courses');
     }
+
     public function storeCourse(){
 
         $course = new course();

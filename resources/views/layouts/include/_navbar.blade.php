@@ -70,12 +70,17 @@
                         data-disable-interaction="false"
                     >
                                     <span class="thumb-sm avatar float-left">
-                                        <img class="rounded-circle" src="{{ $user->image_path }}"
-                                             alt="...">
+                                        <span class="thumb-sm avatar float-left">
+                                        @if (auth()->user()->image == 'default.png')
+                                                <img class="rounded-circle" src="{{ asset('demo/img/people/a5.jpg')}}" alt="...">
+                                            @else
+                                                <img class="rounded-circle" src="{{  auth()->user()->image_path }}" alt="...">
+                                            @endif
+                                    </span>
                                     </span>
                         &nbsp;
-                        {{ auth()->user()->first_name }} <strong>
-                        </strong>{{ auth()->user()->last_name }}
+                        {{ auth()->user()->first_name }} <strong> {{ auth()->user()->last_name }}
+                        </strong>&nbsp;
                         <span class="circle bg-primary fw-bold text-white">
                                         15
                                     </span>
@@ -118,8 +123,7 @@
                             <div id="notifications-list" class="list-group thin-scroll">
                                 <div class="list-group-item">
                                             <span class="thumb-sm float-left mr clearfix">
-                                                <img class="rounded-circle" src="{{ $user->image_path }}"
-                                                     alt="...">
+                                                <img class="rounded-circle" src="demo/img/people/a3.jpg" alt="...">
                                             </span>
                                     <p class="no-margin overflow-hidden">
                                         1 new user just signed up! Check out
@@ -151,9 +155,9 @@
                                 </a>
                                 <div class="list-group-item">
                                             <span class="thumb-sm float-left mr clearfix">
-{{--                                                <img class="rounded-circle" src="{{ $user->image_path }}" alt="...">--}}
+                                                <img class="rounded-circle" src="demo/img/people/a5.jpg" alt="...">
                                             </span>
-{{--                                    <p class="no-margin overflow-hidden">{{ auth()->user()->first_name }}--}}
+                                    <p class="no-margin overflow-hidden">
                                         User <a href="#">Jeff</a> registered
                                         &nbsp;&nbsp;
                                         <button class="btn btn-xs btn-success">Allow</button>
@@ -240,8 +244,7 @@
                         <li><a class="dropdown-item" href="#">Inbox &nbsp;&nbsp;<span
                                     class="badge badge-pill bg-danger animated bounceIn">9</span></a></li>
                         <li class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="{{ route('SignUp.index') }}"><i class="la la-sign-out"></i>
-                                &nbspLog Out</a></li>
+                        <li><a class="dropdown-item" href="{{ route('SignUp.index') }}"><i class="la la-sign-out"></i> &nbsp; Log Out</a></li>
                     </ul>
                 </li>
             </ul>
