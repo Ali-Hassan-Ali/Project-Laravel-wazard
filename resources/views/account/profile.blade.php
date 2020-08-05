@@ -732,6 +732,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
+
                     <form method="post" action="{{ route('Account.update', $user->id) }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}

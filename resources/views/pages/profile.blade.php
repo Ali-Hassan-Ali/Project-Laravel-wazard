@@ -178,10 +178,14 @@
                         data-disable-interaction="false"
                     >
                                     <span class="thumb-sm avatar float-left">
-                                        <img class="rounded-circle" src="demo/img/people/a5.jpg" alt="...">
+                                        @if ($user->image == 'default.png')
+                                            <img class="rounded-circle" src="{{ asset('demo/img/people/a5.jpg')}}" alt="...">
+                                        @else
+                                            <img class="rounded-circle" src="{{ $user->image_path }}" alt="...">
+                                        @endif
                                     </span>
                         &nbsp;
-                        Mohamed <strong> Eways
+                        {{ $user->first_name }} <strong> {{ $user->last_name }}
                         </strong>&nbsp;
                         <span class="circle bg-primary fw-bold text-white">
                                         15
@@ -461,15 +465,18 @@
                                         </div>
                                         <div class="row mt-4">
                                             <div class="col-lg-4" style="text-align: center">
-                                                <img class="persone-img"
-                                                     src="../img/83508047_3070092063099389_867852431411008935_n.jpg">
+                                                @if ($user->image == 'default.png')
+                                                    <img class="rounded-circle" src="{{ asset('demo/img/people/a5.jpg')}}" alt="...">
+                                                @else
+                                                    <img class="rounded-circle" src="{{ $user->image_path }}" alt="...">
+                                                @endif
                                             </div>
                                             <div class="col-lg-8">
                                                 <p><span><i class="fa fa-address-card"></i></span><span
-                                                        class="font-weight-bolder"> Name: </span><span id="name"> Mohamed Eways Ahmed</span>
+                                                        class="font-weight-bolder"> Name: </span><span id="name">{{ $user->first_name }} - {{ $user->last_name }}</span>
                                                 </p>
                                                 <p><span><i class="fa fa-envelope-o"></i></span><span
-                                                        class="font-weight-bolder"> Email: </span><span id="email"> mohamedeways9@gmail.com</span>
+                                                        class="font-weight-bolder"> Email: </span><span id="email">{{ $user->email }}</span>
                                                 </p>
                                                 <p><span><i class="fa fa-id-card-o"></i></span><span
                                                         class="font-weight-bolder"> Id: </span><span
@@ -510,16 +517,16 @@
                                         <div class="row mt-4">
                                             <div class="col-lg-6" style="border-right: 1px solid #d9dde4;">
                                                 <p><span><i class="fa fa-home"></i></span> <span
-                                                        class="font-weight-bolder"> Country: </span><span id="adress">Fayoum, Fayoum, Egypt </span>
+                                                        class="font-weight-bolder"> Country: </span><span id="adress">{{ $user->country }}</span>
                                                 </p>
                                                 <p><span><i class="fa fa-phone"></i></span><span
-                                                        class="font-weight-bolder"> M Phone 1: </span><span id="phone">01011297216</span>
+                                                        class="font-weight-bolder"> M Phone 1: </span><span id="phone">{{ $user->phone1 }}</span>
                                                 </p>
                                                 <p><span><i class="fa fa-phone"></i></span><span
-                                                        class="font-weight-bolder"> M Phone 2: </span><span id="id"> 1509950</span>
+                                                        class="font-weight-bolder"> M Phone 2: </span><span id="id">{{ $user->phone2 }}</span>
                                                 </p>
                                                 <p><span><i class="fa fa-birthday-cake"></i></span><span
-                                                        class="font-weight-bolder"> Date of Birth: </span><span id="id"> 1509950</span>
+                                                        class="font-weight-bolder"> Date of Birth: </span><span id="id">{{ $user->dob }}</span>
                                                 </p>
 
                                                 <p>
@@ -537,19 +544,19 @@
                                             <div class="col-lg-6">
                                                 <p><span><i class="fa fa-file-text"></i></span><span
                                                         class="font-weight-bolder"> CV1: </span><span id="cv1"><a
-                                                            class="cv-link" href="#" title="click here"> CV1</a></span>
+                                                            class="cv-link" href="{{ $user->cv1 }}" title="click here"> CV1</a></span>
                                                 </p>
                                                 <p><span><i class="fa fa-file-text"></i></span><span
                                                         class="font-weight-bolder"> CV2: </span><span id="cv2"><a
-                                                            class="cv-link" href="#" title="click here"> CV2</a></span>
+                                                            class="cv-link" href="{{ $user->cv2 }}" title="click here"> CV2</a></span>
                                                 </p>
                                                 <p><span><i class="fa fa-file-text"></i></span><span
                                                         class="font-weight-bolder"> CV3: </span><span id="cv3"><a
-                                                            class="cv-link" href="#" title="click here"> CV3</a></span>
+                                                            class="cv-link" href="{{ $user->cv3 }}" title="click here"> CV3</a></span>
                                                 </p>
                                                 <p><span><i class="fa fa-file-text"></i></span><span
                                                         class="font-weight-bolder"> CV4: </span><span id="cv4"><a
-                                                            class="cv-link" href="#" title="click here">CV4</a></span>
+                                                            class="cv-link" href="{{ $user->cv4 }}" title="click here">CV4</a></span>
                                                 </p>
 
                                                 <p>
@@ -799,26 +806,39 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="modal-body mx-4">
-                    <!--Body-->
-                    <div class="md-form mb-2">
-                        <label data-error="wrong" data-success="right">First Name</label>
-                        <input type="text" id="first_name" class="form-control validate">
+
+
+                <form method="post" action="{{ route('Account.update', $user->id) }}" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    {{ method_field('PUT') }}
+
+                    <div class="modal-body mx-4">
+                        <!--Body-->
+                        <div class="md-form mb-2">
+                            <label data-error="wrong" data-success="right">First Name</label>
+                            <input type="text" value="{{ $user->first_name }}" name="first_name"
+                                   class="form-control validate">
+                        </div>
+                        <div class="md-form mb-2">
+                            <label data-error="wrong" data-success="right">Last Name</label>
+                            <input type="text" value="{{ $user->last_name }}" name="last_name"
+                                   class="form-control validate">
+                        </div>
+
+                        <div class="md-form mb-2">
+                            <label data-error="wrong" data-success="right">Change Image</label>
+                            <input type="file" value="{{ $user->image }}" id="persone_img" name="image"
+                                   style="height: auto"
+                                   class="form-control validate">
+                        </div>
+
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">save changes</button>
+                        </div>
+
                     </div>
-                    <div class="md-form mb-2">
-                        <label data-error="wrong" data-success="right">Last Name</label>
-                        <input type="email" id="last_name" class="form-control validate">
-                    </div>
-                    <div class="md-form mb-2">
-                        <label data-error="wrong" data-success="right">Change Image</label>
-                        <input type="file" id="persone_img" name="img" accept="image/*" style="height: auto"
-                               class="form-control validate">
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onClick="window.location.reload();">Save changes</button>
+                </form>
+
             </div>
         </div>
     </div>

@@ -44,9 +44,10 @@ class MyAccountController extends Controller
     public function update(Request $request, User $user, $id)
     {
 //        dd($request->all());
-
         $user = User::findOrFail($id);
        // Storage::
+
+
 
 if($request->has('Tcv1')) {
 
@@ -78,8 +79,27 @@ if($request->has('Tcv1')) {
 
 }
 
+        $request_data = $request->except(['permissions', 'image']);
 
-        $user->update($request->all());
+        if ($request->image) {
+
+            if ($user->image != 'default.png') {
+
+                Storage::disk('public_uploads')->delete('/user_images/' . $user->image);
+
+            }//end of inner if
+
+            Image::make($request->image)
+                ->resize(300, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })
+                ->save(public_path('uploads/user_images/' . $request->image->hashName()));
+
+            $request_data['image'] = $request->image->hashName();
+
+        }//end of external if
+
+        $user->update($request_data);
 
         $user->save();
 

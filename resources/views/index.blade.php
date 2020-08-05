@@ -181,7 +181,13 @@
                         data-disable-interaction="false"
                     >
                                     <span class="thumb-sm avatar float-left">
-                                        <img class="rounded-circle" src="demo/img/people/a5.jpg" alt="...">
+                                        <span class="thumb-sm avatar float-left">
+                                        @if ($user->image == 'default.png')
+                                                <img class="rounded-circle" src="{{ asset('demo/img/people/a5.jpg')}}" alt="...">
+                                            @else
+                                                <img class="rounded-circle" src="{{ $user->image_path }}" alt="...">
+                                            @endif
+                                    </span>
                                     </span>
                         &nbsp;
                         {{ auth()->user()->first_name }} <strong> {{ auth()->user()->last_name }}
@@ -349,7 +355,7 @@
                         <li><a class="dropdown-item" href="#">Inbox &nbsp;&nbsp;<span
                                     class="badge badge-pill bg-danger animated bounceIn">9</span></a></li>
                         <li class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#"><i class="la la-sign-out"></i> &nbsp; Log Out</a></li>
+                        <li><a class="dropdown-item" href="{{ route('SignUp.index') }}"><i class="la la-sign-out"></i> &nbsp; Log Out</a></li>
                     </ul>
                 </li>
             </ul>
