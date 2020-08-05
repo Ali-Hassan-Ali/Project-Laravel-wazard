@@ -1,0 +1,7 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+Route::resource('SignUp', 'LoginAndRegister\RegisterController');//end of Route Education
+
+Route::resource('Account', 'Account\MyAccountController');//end of Route Education

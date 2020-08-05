@@ -1,0 +1,223 @@
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: #f6f5f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+    height: 700px;
+    margin: -20px 0 50px;
+
+}
+.margin-5{
+    margin-top: 5px;
+}
+.flexbox-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    margin: 0;
+    min-height: 24em;
+
+
+}
+
+.flexbox-item {
+    max-width: 80%;
+    width: 800px;
+    min-height: 400px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, .25), 0 10px 10px rgba(0, 0, 0, .22);
+
+}
+
+.fixed {
+    flex: none;
+    max-width: 70%;
+}
+.image{
+    width: 100%;
+    height: 100%;
+}
+.img{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.form-section{
+    background: #2c3b50;
+}
+.form-section h2 {
+    text-align: center;
+    color: #ffffff;
+    font-size: 1.1rem;
+    padding: 80px 20px 20px 20px;
+font-weight: bold;
+    font-family: sans-serif;
+}
+
+
+.form-group {
+    margin-bottom: 10px;
+    position: relative; }
+
+.form-input {
+    padding-top: 21px; }
+
+.form-label {
+    position: absolute;
+    transition: 0.25s ease;
+    -moz-transition: 0.25s ease;
+    -webkit-transition: 0.25s ease;
+    -o-transition: 0.25s ease;
+    -ms-transition: 0.25s ease;
+    color: #bebebe;
+    left: 0;
+    top: 23px;
+    text-transform: uppercase;
+    font-size: .8rem;
+}
+
+input {
+    transition: 0.3s ease;
+    -moz-transition: 0.3s ease;
+    -webkit-transition: 0.3s ease;
+    -o-transition: 0.3s ease;
+    -ms-transition: 0.3s ease;
+    padding-top: 10px;
+    -webkit-appearance: none; }
+input:focus + .form-label, input:valid + .form-label {
+    top: 1px;
+    font-size: 11px;
+    color: #f6f5f7;
+}
+
+
+input, select {
+    box-sizing: border-box;
+    width: 100%;
+    display: block;
+    border: none;
+    font-family: Poppins;
+    color: #fff;
+    background: transparent;
+    border-bottom: 1px solid #f6f5f7;
+    padding: 4px 0; }
+input:focus, select:focus {
+    border-bottom: 1px solid #f6f5f7;
+    outline: none;}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px transparent inset; }
+
+input::-webkit-input-placeholder {
+    color: #bebebe; }
+input::-moz-placeholder {
+    color: #bebebe; }
+input:-ms-input-placeholder {
+    color: #bebebe; }
+input:-moz-placeholder {
+    color: #bebebe; }
+
+
+.form-submit{
+    text-align: center;
+    margin-top: 20px;
+}
+.submit-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.submit {
+    width: auto;
+    background: #61d1c1;
+    color: #fff;
+    padding: 10px 40px;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+}
+.vertify-booking:hover {
+    text-decoration: underline;
+}
+a:focus, a:active {
+    text-decoration: none;
+    outline: none;
+    transition: all 300ms ease 0s;
+    -moz-transition: all 300ms ease 0s;
+    -webkit-transition: all 300ms ease 0s;
+    -o-transition: all 300ms ease 0s;
+    -ms-transition: all 300ms ease 0s;
+}
+.vertify-booking ,.vertify-booking :hover{
+    color: #f6f5f7;
+    font-size: 11px;
+    text-decoration: none;
+    margin-top: 14px;
+    display: block;
+    transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+}
+
+.vertify-booking :hover{
+    color: white;
+    text-decoration: none;
+}
+.user_form , .org_form{
+    padding: 0px 50px;
+}
+.display{
+    display: none;
+}
+.button{
+    padding-top: 5px ;
+}
+.not_active{
+    background-color: #4c5c73;
+    border: #4c5c73;
+}
+.btn , .btn:focus , .btn:active{
+    box-shadow: none;
+    outline: none;
+    padding: 10px 15px;
+}
+
+.btn-select , .btn-select:hover , .btn-select:focus{
+    font-size: .83rem;
+    background-color: #66dcc6;
+    color: white;
+    border: #66dcc6;
+    outline: none;
+}
+#user_btn{
+    width: 100px;
+    margin-right: -4px;
+    border-radius: 0;
+    border-bottom-left-radius: 25px;
+    border-top-left-radius: 25px;
+}
+#org_btn{
+    border-radius: 0;
+    border-bottom-right-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+.custom-control-label{
+    color: #ffffff;
+    font-size: .8rem;
+}
