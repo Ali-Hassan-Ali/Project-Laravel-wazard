@@ -151,9 +151,9 @@
                                 </a>
                                 <div class="list-group-item">
                                             <span class="thumb-sm float-left mr clearfix">
-                                                <img class="rounded-circle" src="{{ $user->image_path }}" alt="...">
+{{--                                                <img class="rounded-circle" src="{{ $user->image_path }}" alt="...">--}}
                                             </span>
-                                    <p class="no-margin overflow-hidden">{{ auth()->user()->first_name }}
+{{--                                    <p class="no-margin overflow-hidden">{{ auth()->user()->first_name }}--}}
                                         User <a href="#">Jeff</a> registered
                                         &nbsp;&nbsp;
                                         <button class="btn btn-xs btn-success">Allow</button>

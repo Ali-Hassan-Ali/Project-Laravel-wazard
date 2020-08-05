@@ -2,22 +2,28 @@
 <html>
 <head>
     <title>Sing App Dashboard - Courses</title>
-    <link href="css/application.min.css" rel="stylesheet">
+    <link href="{{ asset('css/application.min.css')}}" rel="stylesheet">
     <!-- as of IE9 cannot parse css files with more that 4K classes separating in two files -->
     <!--[if IE 9]>
-    <link href="css/application-ie9-part2.css" rel="stylesheet">
     <![endif]-->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link href="{{ asset('css/application.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/owl-carousel.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/style.css')}}">
+    <link rel="shortcut icon" href="{{ asset('img/favicon.png')}}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Wizard">
     <meta name="keywords" content="Wizard">
     <meta name="author" content="Wizard">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <script>
+        /* yeah we need this empty stylesheet here. It's cool chrome & chromium fix
+        chrome fix https://code.google.com/p/chromium/issues/detail?id=167083
+        https://code.google.com/p/chromium/issues/detail?id=332189
+        */
+    </script>
 </head>
 
-<body class="">
 <!--
   Main sidebar seen on the left. may be static or collapsing depending on selected state.
 
@@ -859,63 +865,70 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <div class="modal-body mx-4">
-                    <!--Body-->
-                    <div class="row">
-                        <div class="col-6 md-form mb-2">
-                            <label data-error="wrong" data-success="right">Country</label>
-                            <input type="text" id="country" class="form-control validate">
-                        </div>
-                        <div class="col-6 md-form mb-2">
-                            <label data-error="wrong" data-success="right">Date of Birth</label>
-                            <input type="date" id="date_birth" class="form-control validate">
-                        </div>
-                    </div>
+            <form method="post" action="{{ route('Account.update',$user->id ) }}" enctype="multipart/form-data">
+                {{ csrf_field() }}
+                {{ method_field('PUT') }}
+                <div class="modal-body">
+                    <div class="modal-body mx-4">
+                        <!--Body-->
+                        <div class="row">
 
-                    <div class="row">
-                        <div class="col-6 md-form mb-2">
-                            <label data-error="wrong" data-success="right">M Phone1</label>
-                            <input type="number" id="phone_1" class="form-control validate">
-                        </div>
-                        <div class="col-6 md-form mb-2">
-                            <label data-error="wrong" data-success="right">M Phone2</label>
-                            <input type="number" id="phone_2" class="form-control validate">
-                        </div>
-                    </div>
+                            <div class="col-6 md-form mb-2">
+                                <label data-error="wrong" data-success="right">Country</label>
+                                <input name="country" type="text" id="country" class="form-control validate">
+                            </div>
 
-                    <div class="row">
-                        <div class="col-lg-6 md-form mb-2">
-                            <label data-error="wrong" data-success="right">Upload CV1</label>
-                            <input type="file" id="cv_one" name="img" accept="*/*" style="height: auto"
-                                   class="form-control validate">
+                            <div class="col-6 md-form mb-2">
+                                <label data-error="wrong" data-success="right">Date of Birth</label>
+                                <input name="dob" type="date" id="date_birth" class="form-control validate">
+                            </div>
                         </div>
-                        <div class="col-lg-6 md-form mb-2">
-                            <label data-error="wrong" data-success="right">Upload CV2</label>
-                            <input type="file" id="cv_two" accept="*/*" style="height: auto"
-                                   class="form-control validate">
-                        </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col-lg-6 md-form mb-2">
-                            <label data-error="wrong" data-success="right">Upload CV3</label>
-                            <input type="file" id="cv_three" name="img" accept="*/*" style="height: auto"
-                                   class="form-control validate">
-                        </div>
-                        <div class="col-lg-6 md-form mb-2">
-                            <label data-error="wrong" data-success="right">Upload CV4</label>
-                            <input type="file" id="cv_four" accept="*/*" style="height: auto"
-                                   class="form-control validate">
-                        </div>
-                    </div>
+                        <div class="row">
+                            <div class="col-6 md-form mb-2">
+                                <label data-error="wrong" data-success="right">M Phone1</label>
+                                <input name="phone1" type="number" id="phone_1" class="form-control validate">
+                            </div>
 
+                            <div class="col-6 md-form mb-2">
+                                <label data-error="wrong" data-success="right">M Phone2</label>
+                                <input name="phone2" type="number" id="phone_2" class="form-control validate">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6 md-form mb-2">
+                                <label data-error="wrong" data-success="right">Upload CV1</label>
+                                <input type="file" id="cv_one" name="Tcv1" accept="*/*" style="height: auto"
+                                       class="form-control validate">
+                            </div>
+                            <div class="col-lg-6 md-form mb-2">
+                                <label data-error="wrong" data-success="right">Upload CV2</label>
+                                <input type="file" id="cv_two" name="Tcv2" accept="*/*" style="height: auto"
+                                       class="form-control validate">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6 md-form mb-2">
+                                <label data-error="wrong" data-success="right">Upload CV3</label>
+                                <input type="file" id="cv_three" name="Tcv3" accept="*/*" style="height: auto"
+                                       class="form-control validate">
+                            </div>
+                            <div class="col-lg-6 md-form mb-2">
+                                <label data-error="wrong" data-success="right">Upload CV4</label>
+                                <input type="file" id="cv_four" name="Tcv4" accept="*/*" style="height: auto"
+                                       class="form-control validate">
+                            </div>
+                        </div>
+
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">save changes</button>
+                        </div>
+
+                    </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onClick="window.location.reload();">Save changes</button>
-            </div>
+            </form>
         </div>
     </div>
 </div>
@@ -927,36 +940,25 @@
 </div>
 
 <!-- common libraries. required for every page-->
-<script src="../node_modules/jquery/dist/jquery.min.js"></script>
-<script src="../node_modules/jquery-pjax/jquery.pjax.js"></script>
-<script src="../node_modules/popper.js/dist/umd/popper.js"></script>
-<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
-<script src="../node_modules/bootstrap/js/dist/util.js"></script>
-<script src="../node_modules/jquery-slimscroll/jquery.slimscroll.js"></script>
-<script src="../node_modules/widgster/widgster.js"></script>
-<script src="../node_modules/pace.js/pace.js"
+<script src="{{ asset('../node_modules/jquery/dist/jquery.min.js')}}"></script>
+<script src="{{ asset('../node_modules/jquery-pjax/jquery.pjax.js')}}"></script>
+<script src="{{ asset('../node_modules/popper.js/dist/umd/popper.js')}}"></script>
+<script src="{{ asset('../node_modules/bootstrap/dist/js/bootstrap.js')}}"></script>
+<script src="{{ asset('../node_modules/bootstrap/js/dist/util.js')}}"></script>
+<script src="{{ asset('../node_modules/jquery-slimscroll/jquery.slimscroll.js')}}"></script>
+<script src="{{ asset('../node_modules/widgster/widgster.js')}}"></script>
+<script src="{{ asset('../node_modules/pace.js/pace.js')}}"
         data-pace-options='{ "target": ".content-wrap", "ghostTime": 1000 }'></script>
-<script src="../node_modules/hammerjs/hammer.js"></script>
-<script src="../node_modules/jquery-hammerjs/jquery.hammer.js"></script>
-<!-- common app js -->
-<script src="js/settings.js"></script>
-<script src="js/app.js"></script>
+<script src="{{ asset('../node_modules/hammerjs/hammer.js')}}"></script>
+<script src="{{ asset('../node_modules/jquery-hammerjs/jquery.hammer.js')}}"></script>
 
-<!-- Page scripts -->
-<script src="../node_modules/flot.animator/jquery.flot.animator.min.js"></script>
-<script src="../node_modules/flot/jquery.flot.js"></script>
-<script src="../node_modules/flot-orderBars/js/jquery.flot.orderBars.js"></script>
-<script src="../node_modules/flot/jquery.flot.selection.js"></script>
-<script src="../node_modules/flot/jquery.flot.time.js"></script>
-<script src="../node_modules/flot/jquery.flot.pie.js"></script>
-<script src="../node_modules/flot/jquery.flot.stack.js"></script>
-<script src="../node_modules/flot/jquery.flot.crosshair.js"></script>
-<script src="../node_modules/flot/jquery.flot.symbol.js"></script>
-<script src="../node_modules/flot.dashes/jquery.flot.dashes.js"></script>
-<script src="../node_modules/jquery-sparkline/jquery.sparkline.js"></script>
-<script src="../node_modules/bootstrap_calendar/bootstrap_calendar/js/bootstrap_calendar.min.js"></script>
-<script src="../node_modules/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+
+<!-- common app js -->
+<script src="{{ asset('js/settings.js')}}"></script>
+<script src="{{ asset('js/app.js')}}"></script>
+<script src="{{ asset('js/carousol.js')}}"></script>
+
+
 <script id="AnyMod-script">
     (function (m, o, d, u, l, a, r, i, z, e) {
         u[m] = {
@@ -984,32 +986,20 @@
         priority: 3
     });
 </script>
-
 <script>
-    $(document).ready(function () {
-        $('.customer-logos').slick({
-            slidesToShow: 2,
-            slidesToScroll: 1,
-            autoplay: true,
-            autoplaySpeed: 1500,
-            arrows: false,
-            dots: false,
-            pauseOnHover: false,
-            responsive: [{
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 2
-                }
-            }, {
-                breakpoint: 520,
-                settings: {
-                    slidesToShow: 3
-                }
-            }]
-        });
+    /* owl carousel cliant
+    -------------------------------------------------------*/
+    $('.owl-carousel').owlCarousel({
+
+        items: 1,
+        mouseDrag: true,
+        autoplay: true,
+        smartSpeed: 200,
+
     });
 </script>
+
 <!-- page specific js -->
-<script src="js/index.js"></script>
+<script src="{{ asset('js/index.js')}}"></script>
 </body>
 </html>

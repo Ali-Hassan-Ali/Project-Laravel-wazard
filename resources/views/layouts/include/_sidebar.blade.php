@@ -17,7 +17,7 @@
                             13
                         </span>
                 &nbsp;
-                {{ auth()->user()->name }}<strong></strong>
+                {{ auth()->user()->first_name }} <strong> {{ auth()->user()->last_name }}
                 <b class="caret"></b>
             </a>
             <!-- #notifications-dropdown-menu goes here when screen collapsed to xs or sm -->

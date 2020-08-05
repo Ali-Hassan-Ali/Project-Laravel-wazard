@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
+
 class MyAccountController extends Controller
 {
 
@@ -24,7 +25,7 @@ class MyAccountController extends Controller
     public function show(User $user, $id)
     {
         $user = User::find($id);
-        return view('account.profile', compact('user'));
+        return view('pages.profile', compact('user'));
     }
 
 
@@ -45,28 +46,40 @@ class MyAccountController extends Controller
 //        dd($request->all());
 
         $user = User::findOrFail($id);
+       // Storage::
 
-        $request_data = $request->except(['image']);
+if($request->has('Tcv1')) {
 
-        if ($request->image) {
+    $request_data = $request->file('Tcv1')->store('/public');
+    $nn = Storage::url($request_data);
+    $request_data = asset($nn);
+    $request['cv1'] = $request_data;
 
-            if ($user->image != 'default.png') {
+}if($request->has('Tcv2')) {
 
-                Storage::disk('public_uploads')->delete('/user_images/' . $user->image);
+    $request_data = $request->file('Tcv2')->store('/public');
+    $nn = Storage::url($request_data);
+    $request_data = asset($nn);
+    $request['cv2'] = $request_data;
 
-            }//end of inner if
+}if($request->has('Tcv3')) {
 
-            Image::make($request->image)
-                ->resize(300, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                })
-                ->save(public_path('uploads/user_images/' . $request->image->hashName()));
+    $request_data = $request->file('Tcv3')->store('/public');
+    $nn = Storage::url($request_data);
+    $request_data = asset($nn);
+    $request['cv3'] = $request_data;
 
-            $request_data['image'] = $request->image->hashName();
+}if($request->has('Tcv4')) {
 
-        }//end of external if
+    $request_data = $request->file('Tcv4')->store('/public');
+    $nn = Storage::url($request_data);
+    $request_data = asset($nn);
+    $request['cv4'] = $request_data;
 
-        $user->update($request_data);
+}
+
+
+        $user->update($request->all());
 
         $user->save();
 

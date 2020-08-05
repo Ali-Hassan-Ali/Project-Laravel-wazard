@@ -329,7 +329,20 @@
                         <i class="la la-cog"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right">
-                        <li><a class="dropdown-item" href="#"><i class="glyphicon glyphicon-user"></i> &nbsp; My Account</a>
+                        <li>
+                            @if (auth()->user()->organization == 'TrainingOrg')
+                                <a class="dropdown-item" href="{{ route('Account.show', auth()->user()->id) }}"><i
+                                        class="glyphicon glyphicon-user"></i>My Account TrainingOrg</a></a>
+                            @elseif (auth()->user()->organization == 'WorkOrg')
+                                <a class="dropdown-item" href="{{ route('Account.show', auth()->user()->id) }}"><i
+                                        class="glyphicon glyphicon-user"></i>My Account WorkOrg</a></a>
+                            @elseif (auth()->user()->organization == 'EducationalOrg')
+                                <a class="dropdown-item" href="{{ route('Account.show', auth()->user()->id) }}"><i
+                                        class="glyphicon glyphicon-user"></i>My Account EducationalOrg</a></a>
+                            @else
+                                <a class="dropdown-item" href="{{ route('Account.show', auth()->user()->id) }}"><i
+                                        class="glyphicon glyphicon-user"></i>My Account</a></a>
+                            @endif
                         </li>
                         <li class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="#">Calendar</a></li>
