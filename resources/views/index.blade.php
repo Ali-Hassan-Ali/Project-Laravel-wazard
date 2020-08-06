@@ -4,11 +4,6 @@
 
 @section('content')
 
-    <div class="content-wrap">
-    <!-- main page content. the place to put widgets in. usually consists of .row > .col-lg-* > .widget.  -->
-    <main id="content" class="content" role="main">
-        <!-- Page content -->
-
         <div class="analytics">
             <div class="analytics-side">
                 <section class="sliderInLeft">
@@ -100,7 +95,6 @@
             </div>
 
         </div>
-
 
         <!--========== 	 start [testimonel - section] 		========== -->
 
@@ -225,16 +219,14 @@
                 <!--Content-->
                 <div class="modal-content form-elegant">
                     <!--Header-->
-                    <form method="get" action="{{ route('addcmaterial.create') }}" enctype="multipart/form-data">
                         <div class="modal-header text-center">
                             <h3 class="modal-title w-100 dark-grey-text font-weight-bold" id="myModalLabel"><strong>Add
                                     Material</strong></h3>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
-                    </form>
                 </div>
-                <form method="post" action="{{ route('addcmaterial.store') }}" enctype="multipart/form-data">
+                <form method="post" action="{{ route('AddCourse.store') }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     {{ method_field('post') }}
 

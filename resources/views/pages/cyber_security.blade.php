@@ -109,14 +109,14 @@
                                 @foreach($courses  as $course )
                                     @if($course->course_type == 'cyber')
                                         <div class="col-md-3 col-sm-6 mb-5">
-                                            <div class="card card-block">
-                                                <h5 class="card-title mt-3 mb-3"> {{$course->name}}</h5>
-                                                <p class="card-text">{{$course->description}}</p>
-                                                <h5 class="card-title mt-3 mb-3">  <a   href="{{ url($course->link ) }}"> <a href="{{ url($course->link ) }}" target="_blank"> go to link   </a>
-                                                        <img class="track_img" src="/uploads/coursesimages/{{ $course->image }}">
-
-
-                                            </div>
+                                            <a href="{{ asset($course->link ) }}" class="link-course">
+                                                <div class="card card-block">
+                                                    <img class="track_img" src="{{ $course->image_path }}" alt="Photo of sunset">
+                                                    <h5 class="card-title mt-3 mb-3"> {{$course->name}}</h5>
+                                                    <a href="URL/{{ url($course->link ) }}">https://{{ $course->link  }}</a>
+                                                    <p class="card-text">{{$course->description}}</p>
+                                                </div>
+                                            </a>
                                         </div>
                                     @endif
                                 @endforeach
@@ -169,18 +169,44 @@
                 <!--Body-->
                 <div class="modal-body mx-4">
                     <!--Body-->
-                    <div class="md-form mb-5">
-                        <label data-error="wrong" data-success="right" for="Form-email1">Add Link</label>
-                        <input type="email" id="Form-email1" class="form-control validate" placeholder="https://www.udemy.com/courses/development/">
-                    </div>
+                    <form method="post" action="{{ route('AddCourse.store') }}" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    {{ method_field('post') }}
+                    <!--Body-->
 
-                    <div class="md-form pb-3">
-                        <label data-error="wrong" data-success="right" for="Form-pass1">Add Comment</label>
-                        <textarea type="text" id="Form-pass1" class="form-control validate"></textarea>
-                    </div>
-                    <div class="text-center mb-3">
-                        <button type="button" class="btn material-btn">Submit</button>
-                    </div>
+                        <div class="form-group">
+                            <label for="email">Enter name</label>
+                            <input type="text" name="name" class="form-control" placeholder="Enter email">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect2">Select track</label>
+                            <select class="form-control" name="course_type">
+                                <option>web dev</option>
+                                <option>cyber</option>
+                                <option>mobile</option>
+                                <option>data</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">enter descrption</label>
+                            <textarea type="text" name="description" class="form-control"
+                                      placeholder="Enter description">
+                                </textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Ener Link</label>
+                            <input type="text" name="link" class="form-control" placeholder="Enter link">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Selcte Images</label>
+                            <input type="file" name="image" class="form-control" placeholder="Selcte Images"">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Course <i class="fa fa-plus"></i></button>
+                    </form>
                 </div>
             </div>
             <!--/.Content-->

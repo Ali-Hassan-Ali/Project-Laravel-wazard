@@ -21,7 +21,7 @@ class course extends Model
 
     public function getImagePathAttribute()
     {
-        return asset('uploads/cource/' . $this->image);
+        return asset('uploads/Course/' . $this->image);
 
     }//end of get image path
 

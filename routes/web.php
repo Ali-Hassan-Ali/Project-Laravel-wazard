@@ -14,7 +14,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('cyber_security', 'CyberSecurityController');//end of Route Cyber Security
     Route::resource('data_base', 'DataBaseController');
 
-    Route::resource('addcmaterial', 'AddCmaterialController');//end of Route add Material
+    Route::resource('AddCourse', 'AddCourseController');//end of Route add Material
 
     Route::get('/index', function () {
         return view('index');
