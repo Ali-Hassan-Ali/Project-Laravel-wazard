@@ -9,8 +9,7 @@
                         <div class="footer-logo">
                             <a href="#"> Wizard </a>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit ducimus voluptatibus neque
-                            illo id repellat quisquam? Autem expedita earum quae laborum ipsum ad.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit ducimus voluptatibus neque illo id repellat quisquam? Autem expedita earum quae laborum ipsum ad.</p>
                     </div>
                     <!-- Social Icon -->
                     <div class="footer-social-info fadeInUp" data-wow-delay="0.4s">
@@ -68,9 +67,3 @@
     </div>
 
 </footer>
-</main>
-</div>
-<!-- The Loader. Is shown when pjax happens -->
-<div class="loader-wrap hiding hide">
-    <i class="fa fa-circle-o-notch fa-spin-fast"></i>
-</div>

@@ -32,12 +32,22 @@
     * Static - stays always open.
 -->
 @include('layouts.include._sidebar')
+
 <!-- This is the white navigation bar seen on the top. A bit enhanced BS navbar. See .page-controls in _base.scss. -->
 @include('layouts.include._navbar')
 
-@yield('content')
+<div class="content-wrap">
 
-@include('layouts.include._footer')
+<!-- main page content. the place to put widgets in. usually consists of .row > .col-lg-* > .widget.  -->
+    <main id="content" class="content" role="main">
+
+        @yield('content')
+
+        @include('layouts.include._footer')
+
+    </main>
+
+</div>
 <!-- common libraries. required for every page-->
 <script src="{{ asset('../node_modules/jquery/dist/jquery.min.js')}}"></script>
 <script src="{{ asset('../node_modules/jquery-pjax/jquery.pjax.js')}}"></script>

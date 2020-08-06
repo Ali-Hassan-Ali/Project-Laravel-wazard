@@ -71,11 +71,8 @@
                     >
                                     <span class="thumb-sm avatar float-left">
                                         <span class="thumb-sm avatar float-left">
-                                        @if (auth()->user()->image == 'default.png')
-                                                <img class="rounded-circle mt-3" src="{{ asset('demo/img/people/a5.jpg')}}" alt="...">
-                                            @else
-                                                <img class="rounded-circle" src="{{  auth()->user()->image_path }}" alt="...">
-                                            @endif
+                                            <img class="rounded-circle mt-4" src="{{  auth()->user()->image_path }}"
+                                                     alt="...">
                                     </span>
                                     </span>
                         &nbsp;
@@ -244,7 +241,8 @@
                         <li><a class="dropdown-item" href="#">Inbox &nbsp;&nbsp;<span
                                     class="badge badge-pill bg-danger animated bounceIn">9</span></a></li>
                         <li class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="{{ route('SignUp.index') }}"><i class="la la-sign-out"></i> &nbsp; Log Out</a></li>
+                        <li><a class="dropdown-item" href="{{ route('SignUp.index') }}"><i class="la la-sign-out"></i>
+                                &nbsp; Log Out</a></li>
                     </ul>
                 </li>
             </ul>

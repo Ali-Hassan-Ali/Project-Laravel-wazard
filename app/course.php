@@ -16,5 +16,14 @@ class course extends Model
     ];    //
 
 
+    protected $appends = ['image_path'];
+
+
+    public function getImagePathAttribute()
+    {
+        return asset('uploads/cource/' . $this->image);
+
+    }//end of get image path
+
 }
 

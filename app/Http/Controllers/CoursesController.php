@@ -17,7 +17,7 @@ public function index(){
 }
     //
     public function create(){
-        return view('courses');
+        return view('pages.courses');
     }
 
     public function storeCourse(){

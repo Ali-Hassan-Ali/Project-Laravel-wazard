@@ -44,7 +44,7 @@ class AddCmaterialController extends Controller
             'course_type' => 'required',
             'description' => 'required',
             'link' => 'required',
-            'image' => 'required',
+            'image' => 'image',
         ]);
 
         $request_data = $request->except(['image']);
@@ -52,7 +52,7 @@ class AddCmaterialController extends Controller
         if ($request->image) {
 
             Image::make($request->image)
-                ->resize(300, null, function ($constraint) {
+                ->resize(300, 450  .null, function ($constraint) {
                     $constraint->aspectRatio();
                 })
                 ->save(public_path('uploads/cource/' . $request->image->hashName()));
