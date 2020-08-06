@@ -122,11 +122,7 @@
                                         </div>
                                         <div class="row mt-4">
                                             <div class="col-lg-4" style="text-align: center">
-                                                @if ($user->image == 'default.png')
-                                                    <img class="rounded-circle" src="{{ asset('demo/img/people/a5.jpg')}}" alt="...">
-                                                @else
-                                                    <img class="rounded-circle" src="{{ $user->image_path }}" alt="...">
-                                                @endif
+                                                <img class="rounded-circle" width="50%" src="{{ $user->image_path }}" alt="...">
                                             </div>
                                             <div class="col-lg-8">
                                                 <p><span><i class="fa fa-address-card"></i></span><span
@@ -469,7 +465,7 @@
             <div class="modal-body">
 
 
-                <form method="post" action="{{ route('Account.update', $user->id) }}" enctype="multipart/form-data">
+                <form method="post" action="{{ route('AccountProfile.update', $user->id) }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     {{ method_field('PUT') }}
 
@@ -623,10 +619,6 @@
 </div>
 <!-- End Modal contact info -->
 
-<!-- The Loader. Is shown when pjax happens -->
-<div class="loader-wrap hiding hide">
-    <i class="fa fa-circle-o-notch fa-spin-fast"></i>
-</div>
 
 
 @endsection

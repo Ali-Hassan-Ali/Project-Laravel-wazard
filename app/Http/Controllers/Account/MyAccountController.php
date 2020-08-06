@@ -35,17 +35,10 @@ class MyAccountController extends Controller
     }
 
 
-    public function edit(User $user)
+    public function edit(User $user, $request, $id)
     {
-        //
-    }
-
-
-    public function update(Request $request, User $user, $id)
-    {
-//        dd($request->all());
         $user = User::findOrFail($id);
-       // Storage::
+        // Storage::
 
         $request_data = $request->except(['image']);
 
@@ -65,52 +58,70 @@ class MyAccountController extends Controller
 
             $request_data['image'] = $request->image->hashName();
 
+
         }//end of external if
 
 
-if($request->has('Tcv1')) {
+        $user->update($request_data);
 
-    $request_data = $request->file('Tcv1')->store('/public');
-    $nn = Storage::url($request_data);
-    $request_data = asset($nn);
-    $request['cv1'] = $request_data;
+        return redirect()->back();
 
-}if($request->has('Tcv1')) {
+    }/*end of function edit*/
 
-    $request_data = $request->file('Tcv1')->store('/public');
-    $nn = Storage::url($request_data);
-    $request_data = asset($nn);
-    $request['cv1'] = $request_data;
 
-}if($request->has('Tresume')) {
+    public function update(Request $request, User $user, $id)
+    {
+//        dd($request->all());
+        $user = User::findOrFail($id);
 
-    $request_data = $request->file('Tresume')->store('/public');
-    $nn = Storage::url($request_data);
-    $request_data = asset($nn);
-    $request['resume'] = $request_data;
+        if ($request->has('Tcv1')) {
 
-}if($request->has('Tcv2')) {
+            $request_data = $request->file('Tcv1')->store('/public');
+            $nn = Storage::url($request_data);
+            $request_data = asset($nn);
+            $request['cv1'] = $request_data;
 
-    $request_data = $request->file('Tcv2')->store('/public');
-    $nn = Storage::url($request_data);
-    $request_data = asset($nn);
-    $request['cv2'] = $request_data;
+        }
+        if ($request->has('Tcv1')) {
 
-}if($request->has('Tcv3')) {
+            $request_data = $request->file('Tcv1')->store('/public');
+            $nn = Storage::url($request_data);
+            $request_data = asset($nn);
+            $request['cv1'] = $request_data;
 
-    $request_data = $request->file('Tcv3')->store('/public');
-    $nn = Storage::url($request_data);
-    $request_data = asset($nn);
-    $request['cv3'] = $request_data;
+        }
+        if ($request->has('Tresume')) {
 
-}if($request->has('Tcv4')) {
+            $request_data = $request->file('Tresume')->store('/public');
+            $nn = Storage::url($request_data);
+            $request_data = asset($nn);
+            $request['resume'] = $request_data;
 
-    $request_data = $request->file('Tcv4')->store('/public');
-    $nn = Storage::url($request_data);
-    $request_data = asset($nn);
-    $request['cv4'] = $request_data;
+        }
+        if ($request->has('Tcv2')) {
 
-}
+            $request_data = $request->file('Tcv2')->store('/public');
+            $nn = Storage::url($request_data);
+            $request_data = asset($nn);
+            $request['cv2'] = $request_data;
+
+        }
+        if ($request->has('Tcv3')) {
+
+            $request_data = $request->file('Tcv3')->store('/public');
+            $nn = Storage::url($request_data);
+            $request_data = asset($nn);
+            $request['cv3'] = $request_data;
+
+        }
+        if ($request->has('Tcv4')) {
+
+            $request_data = $request->file('Tcv4')->store('/public');
+            $nn = Storage::url($request_data);
+            $request_data = asset($nn);
+            $request['cv4'] = $request_data;
+
+        }
 
         $user->update($request->all());
 

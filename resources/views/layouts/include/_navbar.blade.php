@@ -72,7 +72,7 @@
                                     <span class="thumb-sm avatar float-left">
                                         <span class="thumb-sm avatar float-left">
                                         @if (auth()->user()->image == 'default.png')
-                                                <img class="rounded-circle" src="{{ asset('demo/img/people/a5.jpg')}}" alt="...">
+                                                <img class="rounded-circle mt-3" src="{{ asset('demo/img/people/a5.jpg')}}" alt="...">
                                             @else
                                                 <img class="rounded-circle" src="{{  auth()->user()->image_path }}" alt="...">
                                             @endif
