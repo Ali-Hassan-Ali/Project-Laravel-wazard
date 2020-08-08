@@ -36,4 +36,12 @@ Route::group(['middleware' => 'auth'], function () {
         return view('pages.careers');
     });
 
+    Route::get('/TrainingOrg', function () {
+        return view('pages.Organization.Training Organization profile');
+    });
+
+    Route::get('/WorkOrg', function () {
+        return view('pages.Organization.Work Organization profile');
+    });
+
 });

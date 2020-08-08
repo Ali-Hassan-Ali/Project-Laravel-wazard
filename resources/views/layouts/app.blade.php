@@ -6,6 +6,7 @@
     <!-- as of IE9 cannot parse css files with more that 4K classes separating in two files -->
     <!--[if IE 9]>
     <![endif]-->
+    <link href="{{ asset('css/application-ie9-part2.css')}}" rel="stylesheet">
     <link href="{{ asset('css/application.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/owl-carousel.css')}}">
     <link rel="stylesheet" href="{{ asset('css/style.css')}}">
@@ -48,6 +49,9 @@
     </main>
 
 </div>
+
+@include('layouts.include._modelTrainingOrg')
+
 <!-- common libraries. required for every page-->
 <script src="{{ asset('../node_modules/jquery/dist/jquery.min.js')}}"></script>
 <script src="{{ asset('../node_modules/jquery-pjax/jquery.pjax.js')}}"></script>
@@ -67,6 +71,19 @@
 <script src="{{ asset('js/app.js')}}"></script>
 <script src="{{ asset('js/carousol.js')}}"></script>
 
+<script src="{{ asset('../node_modules/flot.animator/jquery.flot.animator.min.js')}}"></script>
+<script src="{{ asset('../node_modules/flot/jquery.flot.js')}}"></script>
+<script src="{{ asset('../node_modules/flot-orderBars/js/jquery.flot.orderBars.')}}js"></script>
+<script src="{{ asset("../node_modules/flot/jquery.flot.selection.js")}}"></script>
+<script src="{{ asset('../node_modules/flot/jquery.flot.time.js')}}"></script>
+<script src="{{ asset('../node_modules/flot/jquery.flot.pie.js')}}"></script>
+<script src="{{ asset('../node_modules/flot/jquery.flot.stack.')}}js"></script>
+<script src="{{ asset('../node_modules/flot/jquery.flot.crosshair.js')}}"></script>
+<script src="{{ asset('../node_modules/flot/jquery.flot.symbol.js')}}"></script>
+<script src="{{ asset('../node_modules/flot.dashes/jquery.flot.dashes.js')}}"></script>
+<script src="{{ asset('../node_modules/jquery-sparkline/jquery.sparkline.js')}}"></script>
+<script src="{{ asset('../node_modules/bootstrap-select/dist/js/bootstrap-select.min.js')}}"></script>
+<script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js')}}"></script>
 
 <script id="AnyMod-script">
     (function (m, o, d, u, l, a, r, i, z, e) {
@@ -106,6 +123,51 @@
         smartSpeed: 200,
 
     });
+    $(document).ready(function(){
+        $('.customer-logos').slick({
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 1500,
+            arrows: false,
+            dots: false,
+            pauseOnHover: false,
+            responsive: [{
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2
+                }
+            }, {
+                breakpoint: 520,
+                settings: {
+                    slidesToShow: 3
+                }
+            }]
+        });
+    });
+</script>
+<script>
+    // Initialize and add the map
+    function initMap() {
+        // The location of Uluru
+        var uluru = {lat: 29.295981, lng: 30.834696};
+        // The map, centered at Uluru
+        var map = new google.maps.Map(
+            document.getElementById('map'), {zoom: 4, center: uluru});
+        // The marker, positioned at Uluru
+        var marker = new google.maps.Marker({position: uluru, map: map});
+    }
+</script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGYku5AZi5oPfH4ARTDoPrs0Tb0PhxxN4&callback=initMap"
+        type="text/javascript"></script>
+
+<script>
+    //  $(document).ready(function() {
+    $('.table tbody').on('click', '.fa', function () {
+        $(this).closest().remove();
+    });
+    //  });
 </script>
 
 <!-- page specific js -->
