@@ -1,78 +1,223 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+# 🧭 Institutions & Activity Management System  
+نظام إدارة المؤسسات والأنشطة الميدانية
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## 📘 Overview | نظرة عامة
+This project is a structured database and system design for managing **institutions, domains, members, work areas, and activities** — including activity paths, equipment, and member roles.  
+يهدف هذا النظام إلى تنظيم عمل المؤسسات والمجالات التابعة لها، وإدارة المناطق وأعضاء الفرق والأنشطة الميدانية والمعدات بشكل دقيق ومرن.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🏛️ Tables Structure | هيكل الجداول
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 🏢 Institutions (المؤسسات)
+| Column | Description |
+|--------|-------------|
+| name | Institution name |
+| logo | Institution logo |
+| website | Institution website |
+| description | Institution description |
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+### 🌐 Domain (النطاق)
+| Column | Description |
+|--------|-------------|
+| keyword | Unique keyword for domain |
+| institution_id | Linked institution |
+| name | Domain name |
+| description | Domain description |
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 👥 Members (الأعضاء)
+| Column | Description |
+|--------|-------------|
+| domain_id | Linked domain |
+| workarea_id | Related work area |
+| name | Member name |
+| nid | National ID |
+| rank | Rank or position |
+| unit | Unit or department |
+| status | Active / inactive |
+| phone | Phone number |
+| email | Email address |
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### 🗺️ Area (المنطقة)
+| Column | Description |
+|--------|-------------|
+| title | Area title |
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
+---
 
-## Contributing
+### 🧩 WorkAreaType (نوع منطقة العمل)
+| Column | Description |
+|--------|-------------|
+| user_id | Created by user |
+| domain_id | Linked domain |
+| title | Work area type name |
+| description | Description |
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+### 🧭 WorkArea (منطقة العمل)
+| Column | Description |
+|--------|-------------|
+| parent_id | Parent area |
+| area_id | Related area |
+| area_type_id | Work area type |
+| title | Work area name |
+| description | Description |
+| location | Geographical location |
+| status | Status (active/inactive) |
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+### 🧪 Samples (أنواع الأنشطة)
+| Column | Description |
+|--------|-------------|
+| title | Sample title |
+| user_id | Created by user |
+| domain_id | Linked domain |
+| description | Description |
+| visibility | Public or private |
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
 
-## License
+### 🚀 Activities (الأنشطة)
+| Column | Description |
+|--------|-------------|
+| user_id | Created by user |
+| sample_id | Linked sample |
+| workarea_id | Related work area |
+| start_at | Start time |
+| end_at | End time |
+| status | Activity status |
+| slug | URL slug |
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+### 🛤️ Path (المسار)
+| Column | Description |
+|--------|-------------|
+| user_id | Created by user |
+| from | Start point |
+| to | End point |
+| workarea | Related work area |
+| start_at | Start time |
+| end_at | End time |
+| status | Path status |
+| bio | Description or notes |
+
+---
+
+### 🔗 Activity Path (مسار النشاط)
+| Column | Description |
+|--------|-------------|
+| path_id | Linked path |
+| activity_id | Linked activity |
+| skippable | Can be skipped or not |
+
+---
+
+### ⚙️ ActivityPathEquipment (معدات مسار النشاط)
+| Column | Description |
+|--------|-------------|
+| equipment_id | Linked equipment |
+| activity_path_id | Linked activity path |
+| amount | Equipment quantity |
+
+---
+
+### 🧍 MemberRoles (أدوار الأعضاء)
+| Column | Description |
+|--------|-------------|
+| domain_id | Linked domain |
+| title | Role title |
+| descriptions | Role description |
+
+---
+
+### 👥 ActivityPathMember (أعضاء مسار النشاط)
+| Column | Description |
+|--------|-------------|
+| member_id | Linked member |
+| activity_path_id | Linked activity path |
+| member_role_id | Linked member role |
+
+---
+
+### 🧰 ActivityPathMemberEquipment (معدات عضو مسار النشاط)
+| Column | Description |
+|--------|-------------|
+| activity_path_member_id | Linked activity path member |
+| member_id | Linked member |
+| equipment_id | Linked equipment |
+
+---
+
+### 🧾 ActivityPathMemberEquipmentProperties (خصائص معدات عضو مسار النشاط)
+| Column | Description |
+|--------|-------------|
+| activity_path_member_id | Linked path member |
+| label | Property label |
+| value | Property value |
+| is_unique | Unique constraint |
+| is_nullable | Nullable or required |
+| type | Data type |
+| info | Additional info |
+| activity_path_member_equipment_id | Linked equipment record |
+
+---
+
+### 🧱 Equipment (المعدات)
+| Column | Description |
+|--------|-------------|
+| title | Equipment name |
+| info | Equipment details |
+| equipment_type_id | Equipment type |
+
+---
+
+### ⚙️ EquipmentPropertie (خصائص المعدات)
+| Column | Description |
+|--------|-------------|
+| equipment_id | Linked equipment |
+| key | Property key |
+| label | Label name |
+| value | Default or assigned value |
+| is_unique | Unique property |
+| is_nullable | Nullable or required |
+| type | Data type |
+| info | Description |
+
+---
+
+### 🧑‍💼 UserRole (دور المستخدم)
+| Column | Description |
+|--------|-------------|
+| title | Role title |
+| description | Role description |
+
+---
+
+## 🧠 Summary
+This structure provides full flexibility to manage:
+- Institutions and their domains  
+- Members, roles, and work areas  
+- Activities, paths, and associated equipment  
+- Dynamic relationships between users, equipment, and activities  
+
+---
+
+## 🧩 Tech Stack (اقتراح للتنفيذ)
+- **Backend:** Laravel 11  
+- **Database:** MySQL  
+- **Frontend:** Blade / Vue / React  
+- **Version Control:** Git & GitHub  
+
+---
+
+## 📄 License
+This project is open-source and available under the [MIT License](LICENSE).
